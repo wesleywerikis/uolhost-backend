@@ -1,5 +1,7 @@
 package com.werikis.uolhost.model;
 
+import com.werikis.uolhost.model.dtos.PlayerDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +34,11 @@ public class Player {
     private String codiname;
     private GroupType groupType;
 
+    public Player(PlayerDto dto) {
+        this.name = dto.name();
+        this.email = dto.email();
+        this.phoneNumber = dto.phoneNumber();
+        this.groupType = dto.groupType();
+    }
 
 }
