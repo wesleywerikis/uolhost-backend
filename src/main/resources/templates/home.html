@@ -62,6 +62,13 @@
 
     const url = "/players";
 
+    function limparCampos() {
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("telefone").value = "";
+    document.querySelector('input[name="groupType"]:checked').checked = false;
+    }   
+
     function cadastrar(dados) {
         fetch(url, {
             method: "POST",
@@ -74,6 +81,7 @@
             .then(data => {
                 // Lógica para tratar a resposta do servidor, se necessário
                 console.log(data);
+                limparCampos();
             })
             .catch(error => {
                 // Lógica para tratar erros, se necessário
@@ -108,10 +116,6 @@
                 tabelaCadastros.appendChild(linha);
             });
 
-            document.getElementById("nome").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("telefone").value = "";
-            document.querySelector('input[name="groupType"]:checked').checked = false;
         })
         .catch(error => {
             console.error(error);
